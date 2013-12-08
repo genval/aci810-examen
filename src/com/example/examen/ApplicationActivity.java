@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.examen.helpers.PreferencesHelper;
+import com.example.examen810_db.TaskActivity;
 
 public class ApplicationActivity extends Activity {
 
@@ -49,5 +50,10 @@ public class ApplicationActivity extends Activity {
 		
 		Intent login = new Intent(this, LoginActivity.class);
 		this.startActivity(login);
+	}
+	
+	public void onClickTask(View view){
+		Intent task = new Intent(this,TaskActivity.class);
+		this.startActivity(task);
 	}
 }
