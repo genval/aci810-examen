@@ -34,6 +34,10 @@
             android:name="com.example.examen.ApplicationActivity"
             android:label="@string/title_activity_application" >
         </activity>
+        <activity
+            android:name="com.example.examen810_db.TaskActivity"
+            android:label="@string/title_activity_task" >
+        </activity>
     </application>
 
 </manifest>
