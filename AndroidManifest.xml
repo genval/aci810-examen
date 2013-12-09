@@ -50,6 +50,14 @@
             android:name="com.example.aci810_db.db.MyAppDbHelper"
             android:label="@string/title_activity_my_app_db_helper" >
         </activity>
+        <activity
+            android:name="com.example.aci810_db.db.MyAppDataSource"
+            android:label="@string/title_activity_my_app_data_source" >
+        </activity>
+        <activity
+            android:name="com.example.aci810_db.model.Task"
+            android:label="@string/title_activity_task" >
+        </activity>
     </application>
 
 </manifest>

@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.example.aci810_db.db.MyAppDataSource;
+import com.example.aci810_db.model.Task;
+
 public class TasksActivity extends Activity {
 	private MyAppDataSource ds;
 	private Task taskToUpdate;
@@ -51,7 +54,7 @@ public class TasksActivity extends Activity {
 	
 	public void onDeleteButtonClicked(View view) {
 		
-		Task p = ds.deletePerson(this.taskToUpdate);
+		Task p = ds.deleteTask(this.taskToUpdate);
 		
 		Intent i = new Intent();
 		i.putExtra(TaskActivity.EXTRA_TASK, p);

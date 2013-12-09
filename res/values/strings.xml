@@ -34,7 +34,7 @@
     <string name="title_activity_tasks">TasksActivity</string>
     <string name="btSeleccionar">Seleccionar</string>
     <string name="title_activity_my_app_contract">MyAppContract</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_my_app_db_helper">MyAppDbHelper</string>
+    <string name="title_activity_my_app_data_source">MyAppDataSource</string>
 
 </resources>
