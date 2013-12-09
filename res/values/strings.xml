@@ -17,6 +17,7 @@
     <string name="welcome_label">Welcome</string>
     <string name="task">Tasks</string>
     <string name="note">Notes</string>
+    <string name="task_name_label">Name Task</string>
 
     <!-- BUTTONS -->
     <string name="register_button_label">Register</string>
@@ -29,6 +30,7 @@
     <string name="delete_button_label">Delete</string>
     <string name="Button_ir1">Ir</string>
     <string name="Button_ir2">Ir</string>
-   
+    <string name="title_activity_tasks">TasksActivity</string>
+    <string name="btSeleccionar">Seleccionar</string>
 
 </resources>

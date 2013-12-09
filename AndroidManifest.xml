@@ -38,6 +38,10 @@
             android:name="com.example.examen810_db.TaskActivity"
             android:label="@string/title_activity_task" >
         </activity>
+        <activity
+            android:name="com.example.examen810_db.TasksActivity"
+            android:label="@string/title_activity_tasks" >
+        </activity>
     </application>
 
 </manifest>
