@@ -28,6 +28,7 @@ public class TasksActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tasks);
+		setupActionBar();
 
 		
 		dia =(DatePicker)findViewById(R.id.dpDia);
@@ -63,7 +64,7 @@ public class TasksActivity extends Activity {
 			descriptionTask.setText(t.getTaskDescription());
 			
 			DatePicker dpDia = (DatePicker) this.findViewById(R.id.dpDia);
-			dpDia.set(t.getDate());
+			dpDia.updateDate(dia.getYear(),dia.getMonth() ,dia.getDayOfMonth());
 			
 			Button saveButton = (Button) this.findViewById(R.id.saveButton);
 			saveButton.setText("Update");
@@ -88,6 +89,15 @@ public class TasksActivity extends Activity {
 	    	this.taskToUpdate = null;
 	    }
 	    
+	}
+	
+	/**
+	 * Set up the {@link android.app.ActionBar}.
+	 */
+	private void setupActionBar() {
+
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+
 	}
 
 	@Override

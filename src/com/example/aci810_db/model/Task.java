@@ -9,7 +9,7 @@ public class Task implements Serializable {
 	private long id;
 	private String taskName;
 	private String taskDescription;
-	private String date;
+	private int date;
 	
 	public long getId() {
 		return id;
@@ -29,10 +29,10 @@ public class Task implements Serializable {
 	public void setTaskDescription(String taskDescription) {
 		this.taskDescription = taskDescription;
 	}
-	public String getDate() {
+	public int getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(int date) {
 		this.date = date;
 	}
 	

@@ -39,7 +39,7 @@ public class MyAppDataSource {
 		dbHelper.close();
 	}
 
-	public Task createPerson(String taskName, String taskDescription, String date) {
+	public Task createPerson(String taskName, String taskDescription, int date) {
 		ContentValues values = new ContentValues();
 		values.put(Tasks.COLUMN_NAME_TASK_NAME, taskName);
 		values.put(Tasks.COLUMN_NAME_TASK_DESCRIPTION, taskDescription);
@@ -63,7 +63,7 @@ public class MyAppDataSource {
 	    return t;
 	}
 	
-	public Task updateTask(Task t, String taskName, String taskDescription, String date) {
+	public Task updateTask(Task t, String taskName, String taskDescription, int date) {
 		ContentValues values = new ContentValues();
 		values.put(Tasks.COLUMN_NAME_TASK_NAME, taskName);
 		values.put(Tasks.COLUMN_NAME_TASK_DESCRIPTION, taskDescription);
@@ -119,7 +119,7 @@ public class MyAppDataSource {
 	    t.setId(cursor.getLong(0));
 	    t.setTaskName(cursor.getString(1));
 	    t.setTaskDescription(cursor.getString(2));
-	    t.setDate(cursor.getString(3));
+	    t.setDate(cursor.getInt(3));
 	    return t;
 	}
 }
