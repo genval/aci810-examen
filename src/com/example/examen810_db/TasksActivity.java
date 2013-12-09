@@ -14,8 +14,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.aci570_db.MainActivity;
-import com.example.aci570_db.model.Person;
+
 import com.example.aci810_db.db.MyAppDataSource;
 import com.example.aci810_db.model.Task;
 
