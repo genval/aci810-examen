@@ -36,5 +36,7 @@
     <string name="title_activity_my_app_contract">MyAppContract</string>
     <string name="title_activity_my_app_db_helper">MyAppDbHelper</string>
     <string name="title_activity_my_app_data_source">MyAppDataSource</string>
+    <string name="title_activity_list_view_item_click_listener">ListViewItemClickListener</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
