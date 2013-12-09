@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-
 import com.example.aci810_db.db.MyAppDataSource;
 import com.example.aci810_db.listeners.ListViewItemClickListener;
 import com.example.aci810_db.model.Task;
+import com.example.examen.R;
 
 public class TaskActivity extends ListActivity {
 	
