@@ -42,6 +42,10 @@
             android:name="com.example.examen810_db.TasksActivity"
             android:label="@string/title_activity_tasks" >
         </activity>
+        <activity
+            android:name="com.example.aci810_db.db.MyAppContract"
+            android:label="@string/title_activity_my_app_contract" >
+        </activity>
     </application>
 
 </manifest>

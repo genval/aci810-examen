@@ -16,6 +16,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/task_name_label" />
+     	
+	<EditText
+        android:id="@+id/descriptionTask"
+        android:inputType="text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/task_description_label" />
 
 	<DatePicker
 	    android:id="@+id/dpDia"
@@ -30,4 +38,22 @@
 	    android:layout_height="wrap_content"
 	    android:text="@string/btSeleccionar"
 	    />
+
+	
+	<Button
+	        android:id="@+id/saveButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="17dp"
+	        android:text="@string/save_button_label"
+	        android:onClick="onSaveButtonClicked" />
+	 
+	 <Button
+	        android:id="@+id/deleteButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="17dp"
+	        android:text="@string/delete_button_label"
+	        android:visibility="invisible"
+	        android:onClick="onDeleteButtonClicked" />
 </LinearLayout>
