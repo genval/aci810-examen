@@ -11,8 +11,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.aci570_db.MainActivity;
+import com.example.aci570_db.model.Person;
 import com.example.aci810_db.db.MyAppDataSource;
 import com.example.aci810_db.model.Task;
 
@@ -26,6 +29,7 @@ public class TasksActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tasks);
+
 		
 		dia =(DatePicker)findViewById(R.id.dpDia);
 		boton = (Button)findViewById(R.id.btButton);
@@ -43,6 +47,48 @@ public class TasksActivity extends Activity {
 			}
 					
 		});
+		
+		ds = new MyAppDataSource(this);
+	    ds.open();
+	    
+	    Intent i = this.getIntent();
+	    
+	    if(i.hasExtra(TaskActivity.EXTRA_TASK))
+	    {
+	    	Task t = (Task) i.getSerializableExtra(TaskActivity.EXTRA_TASK);
+	    	
+	    	EditText nameTask = (EditText) this.findViewById(R.id.nameTask);
+	    	nameTask.setText(t.getTaskName());
+			
+			EditText descriptionTask = (EditText) this.findViewById(R.id.descriptionTask);
+			descriptionTask.setText(t.getTaskDescription());
+			
+			DatePicker dpDia = (DatePicker) this.findViewById(R.id.dpDia);
+			dpDia.set(t.getDate());
+			
+			Button saveButton = (Button) this.findViewById(R.id.saveButton);
+			saveButton.setText("Update");
+			
+			Button deleteButton = (Button) this.findViewById(R.id.deleteButton);
+			deleteButton.setVisibility(Button.VISIBLE);
+			
+			this.setTitle("Update Person");
+			
+			this.taskToUpdate = t;
+	    }
+	    else
+	    {
+	    	Button saveButton = (Button) this.findViewById(R.id.saveButton);
+	    	saveButton.setText("Create");
+	    	
+	    	Button deleteButton = (Button) this.findViewById(R.id.deleteButton);
+	    	deleteButton.setVisibility(Button.VISIBLE);
+	    	
+	    	this.setTitle("Create Person");
+	    	
+	    	this.taskToUpdate = null;
+	    }
+	    
 	}
 
 	@Override
