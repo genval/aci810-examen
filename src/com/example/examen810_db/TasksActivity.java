@@ -35,8 +35,8 @@ public class TasksActivity extends Activity {
 				final int mes = dia.getMonth();
 				final int uno = 1;
 				Toast.makeText(getBaseContext(), "El dia seleccionado es:"+
-					(mes + uno) + "/" + dia.getDayOfMonth() +
-					"/" + dia.getYear(), Toast.LENGTH_LONG).show();
+				dia.getYear()+ "/" + dia.getDayOfMonth()+"/"+ (mes + uno)  
+					, Toast.LENGTH_LONG).show();
 			}
 					
 		});
@@ -51,7 +51,7 @@ public class TasksActivity extends Activity {
 	
 	public void onDeleteButtonClicked(View view) {
 		
-		Person p = ds.deletePerson(this.personToUpdate);
+		Task p = ds.deletePerson(this.taskToUpdate);
 		
 		Intent i = new Intent();
 		i.putExtra(TaskActivity.EXTRA_TASK, p);

@@ -46,6 +46,10 @@
             android:name="com.example.aci810_db.db.MyAppContract"
             android:label="@string/title_activity_my_app_contract" >
         </activity>
+        <activity
+            android:name="com.example.aci810_db.db.MyAppDbHelper"
+            android:label="@string/title_activity_my_app_db_helper" >
+        </activity>
     </application>
 
 </manifest>
