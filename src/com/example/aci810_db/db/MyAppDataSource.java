@@ -39,7 +39,7 @@ public class MyAppDataSource {
 		dbHelper.close();
 	}
 
-	public Task createPerson(String taskName, String taskDescription, int date) {
+	public Task createTask(String taskName, String taskDescription, int date) {
 		ContentValues values = new ContentValues();
 		values.put(Tasks.COLUMN_NAME_TASK_NAME, taskName);
 		values.put(Tasks.COLUMN_NAME_TASK_DESCRIPTION, taskDescription);

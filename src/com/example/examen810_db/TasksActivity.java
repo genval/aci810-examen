@@ -74,7 +74,7 @@ public class TasksActivity extends Activity {
 			Button deleteButton = (Button) this.findViewById(R.id.deleteButton);
 			deleteButton.setVisibility(Button.VISIBLE);
 			
-			this.setTitle("Update Person");
+			this.setTitle("Update Task");
 			
 			this.taskToUpdate = t;
 	    }
@@ -86,7 +86,7 @@ public class TasksActivity extends Activity {
 	    	Button deleteButton = (Button) this.findViewById(R.id.deleteButton);
 	    	deleteButton.setVisibility(Button.VISIBLE);
 	    	
-	    	this.setTitle("Create Person");
+	    	this.setTitle("Create Task");
 	    	
 	    	this.taskToUpdate = null;
 	    }
@@ -133,10 +133,12 @@ public class TasksActivity extends Activity {
 		EditText descriptionTask = (EditText) this.findViewById(R.id.descriptionTask);
 		String taskDescription = descriptionTask.getText().toString();
 		
-		DatePicker dateField = (DatePicker) this.findViewById(R.id.dpDia);
-		//int date = dateField.get;
+		DatePicker date = (DatePicker) this.findViewById(R.id.dpDia);
+		int day = date.getDayOfMonth();
+		int month = date.getMonth();
+		int year = date.getYear();
 		
-		if(nameTask.isEmpty() || taskDescription.isEmpty() || date.isEmpty())
+		if(nameTask.isEmpty() || taskDescription.isEmpty() || date.isEnabled())
 		{
 			Toast.makeText(this, "Complete the form before saving", Toast.LENGTH_LONG).show();
 			return;
