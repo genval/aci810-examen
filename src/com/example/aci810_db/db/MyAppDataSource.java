@@ -8,8 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-
-
+import android.widget.DatePicker;
 import com.example.aci810_db.db.MyAppContract.Tasks;
 import com.example.aci810_db.model.Task;
 
@@ -39,11 +38,13 @@ public class MyAppDataSource {
 		dbHelper.close();
 	}
 
-	public Task createTask(String taskName, String taskDescription, int date) {
+	public Task createTask(String taskName, String taskDescription, DatePicker date) {
 		ContentValues values = new ContentValues();
 		values.put(Tasks.COLUMN_NAME_TASK_NAME, taskName);
-		values.put(Tasks.COLUMN_NAME_TASK_DESCRIPTION, taskDescription);
-		values.put(Tasks.COLUMN_NAME_DATE, date);
+		values.put(Tasks.COLUMN_NAME_TASK_DESCRIPTION, taskDescription);		
+		values.put(Tasks.COLUMN_NAME_DATE, date.getYear()+"-"+date.getMonth()+"-"+date.getDayOfMonth()); 
+		
+	
 		
 	    long insertId = db.insert(Tasks.TABLE_NAME, null, values);
 	    
@@ -61,13 +62,16 @@ public class MyAppDataSource {
 	    c.close();
 	    
 	    return t;
+	
 	}
 	
-	public Task updateTask(Task t, String taskName, String taskDescription, int date) {
+	public Task updateTask(Task t, String taskName, String taskDescription,DatePicker date) {
 		ContentValues values = new ContentValues();
 		values.put(Tasks.COLUMN_NAME_TASK_NAME, taskName);
 		values.put(Tasks.COLUMN_NAME_TASK_DESCRIPTION, taskDescription);
-		values.put(Tasks.COLUMN_NAME_DATE, date);
+		values.put(Tasks.COLUMN_NAME_DATE, date.getYear()+date.getMonth()+ date.getDayOfMonth());   
+		
+		
 		
 	    db.update(Tasks.TABLE_NAME, values, Tasks._ID + " = " + t.getId(), null);
 	    
@@ -116,10 +120,11 @@ public class MyAppDataSource {
 	
 	private Task cursorToTask(Cursor cursor) {
 		Task t = new Task();
-	    t.setId(cursor.getLong(0));
+	    t.setId(cursor.getLong(0));//
 	    t.setTaskName(cursor.getString(1));
 	    t.setTaskDescription(cursor.getString(2));
-	    t.setDate(cursor.getInt(3));
+	    t.setDate(cursor.get(3));
+	    
 	    return t;
 	}
 }

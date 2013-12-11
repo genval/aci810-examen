@@ -28,7 +28,7 @@ public class MyAppDbHelper extends SQLiteOpenHelper {
 			    Tasks._ID + " INTEGER PRIMARY KEY," +
 			    Tasks.COLUMN_NAME_TASK_NAME + TEXT_TYPE + COMMA_SEPARATOR +
 			    Tasks.COLUMN_NAME_TASK_DESCRIPTION + TEXT_TYPE + COMMA_SEPARATOR +
-			    Tasks.COLUMN_NAME_DATE + INTEGER_TYPE +
+			    Tasks.COLUMN_NAME_DATE + INTEGER_TYPE + 
 			    " )";
 		
 		private static final String SQL_DROP_TASKS =

@@ -23,6 +23,7 @@ import com.example.aci810_db.model.Task;
 public class TasksActivity extends Activity {
 	private MyAppDataSource ds;
 	private Task taskToUpdate;
+	
 	DatePicker dia;
 	Button boton;
 	
@@ -33,18 +34,18 @@ public class TasksActivity extends Activity {
 		setupActionBar();
 
 		
-		dia =(DatePicker)findViewById(R.id.dpDia);
+		dia =(DatePicker)findViewById(R.id.dpDia);  
 		boton = (Button)findViewById(R.id.btButton);
 		
 		boton.setOnClickListener(new OnClickListener(){	
 
 			@Override
-			public void onClick(View view) {
+			public void onClick(View view) {   //muestra boton seleccionar 
 				// TODO Auto-generated method stub
 				final int mes = dia.getMonth();
 				final int uno = 1;
 				Toast.makeText(getBaseContext(), "El dia seleccionado es:"+
-				dia.getYear()+ "/" + dia.getDayOfMonth()+"/"+ (mes + uno)  
+				dia.getYear()+ "/" + (mes + uno)+"/" + dia.getDayOfMonth() //yyyy-mm-dd
 					, Toast.LENGTH_LONG).show();
 			}
 					
@@ -54,6 +55,7 @@ public class TasksActivity extends Activity {
 	    ds.open();
 	    
 	    Intent i = this.getIntent();
+	    
 	    
 	    if(i.hasExtra(TaskActivity.EXTRA_TASK))
 	    {
@@ -81,6 +83,7 @@ public class TasksActivity extends Activity {
 	    else
 	    {
 	    	Button saveButton = (Button) this.findViewById(R.id.saveButton);
+	    	
 	    	saveButton.setText("Create");
 	    	
 	    	Button deleteButton = (Button) this.findViewById(R.id.deleteButton);
@@ -126,17 +129,18 @@ public class TasksActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void onSaveButtonClicked(View view) {
+	public void onSaveButtonClicked(View view) { 
 		EditText taskName = (EditText) this.findViewById(R.id.nameTask);
 		String nameTask = taskName.getText().toString();
 		
 		EditText descriptionTask = (EditText) this.findViewById(R.id.descriptionTask);
 		String taskDescription = descriptionTask.getText().toString();
 		
-		DatePicker date = (DatePicker) this.findViewById(R.id.dpDia);
+		DatePicker date = (DatePicker) this.findViewById(R.id.dpDia);   
 		int day = date.getDayOfMonth();
 		int month = date.getMonth();
 		int year = date.getYear();
+		
 		
 		if(nameTask.isEmpty() || taskDescription.isEmpty() || date.isEnabled())
 		{
@@ -148,11 +152,14 @@ public class TasksActivity extends Activity {
 		
 		if(this.taskToUpdate != null)
 		{
-			t = ds.updateTask(this.taskToUpdate, nameTask, taskDescription, date);
+			t = ds.updateTask(this.taskToUpdate, nameTask, taskDescription,year+month+day);
 		}
 		else
 		{
-			t = ds.createTask(nameTask, taskDescription, date);
+			
+		    t = ds.createTask(nameTask, taskDescription,year+month+day); 
+		
+			
 		}
 		
 		Intent i = new Intent();

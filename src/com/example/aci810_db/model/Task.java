@@ -2,6 +2,8 @@ package com.example.aci810_db.model;
 
 import java.io.Serializable;
 
+import android.widget.DatePicker;
+
 public class Task implements Serializable {
 
 	public static final long serialVersionUID = 7526472295622776147L;
@@ -9,7 +11,7 @@ public class Task implements Serializable {
 	private long id;
 	private String taskName;
 	private String taskDescription;
-	private int date;
+	private DatePicker date;
 	
 	public long getId() {
 		return id;
@@ -29,10 +31,10 @@ public class Task implements Serializable {
 	public void setTaskDescription(String taskDescription) {
 		this.taskDescription = taskDescription;
 	}
-	public int getDate() {
+	public DatePicker getDate() {
 		return date;
 	}
-	public void setDate(int date) {
+	public void setDate(DatePicker date) {
 		this.date = date;
 	}
 	
