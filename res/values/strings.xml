@@ -19,6 +19,8 @@
     <string name="note">Notes</string>
     <string name="task_name_label">Name Task</string>
     <string name="task_description_label">Description Task</string>
+        <string name="note_name_label">Name Note</string>
+    <string name="note_description_label">Description Note</string>
 
     <!-- BUTTONS -->
     <string name="register_button_label">Register</string>
@@ -38,5 +40,7 @@
     <string name="title_activity_my_app_data_source">MyAppDataSource</string>
     <string name="title_activity_list_view_item_click_listener">ListViewItemClickListener</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_note">NoteActivity</string>
+    <string name="title_activity_notes">NotesActivity</string>
 
 </resources>

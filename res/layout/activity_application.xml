@@ -75,7 +75,8 @@
                style="?android:attr/buttonStyleSmall"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="@string/Button_ir2" />
+               android:text="@string/Button_ir2"
+               android:onClick="onClickNote" />
 
 		</LinearLayout>
 

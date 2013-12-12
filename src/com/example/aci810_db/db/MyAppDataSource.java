@@ -10,7 +10,9 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.DatePicker;
 import com.example.aci810_db.db.MyAppContract.Tasks;
+import com.example.aci810_db.db.MyAppContract.Notes;
 import com.example.aci810_db.model.Task;
+import com.example.aci810_db.model.Note;
 
 
 
@@ -123,8 +125,108 @@ public class MyAppDataSource {
 	    t.setId(cursor.getLong(0));//
 	    t.setTaskName(cursor.getString(1));
 	    t.setTaskDescription(cursor.getString(2));
-	    t.setDate(cursor.get(3));
+	  //  t.setDate(cursor.get(3));
 	    
 	    return t;
+	}
+	
+	
+	//NOTE
+	
+	
+	private String[] allColumns1 = {
+		    Notes._ID,
+		    Notes.COLUMN_NAME_NOTE_NAME,
+		    Notes.COLUMN_NAME_NOTE_DESCRIPTION,
+		    };
+
+
+
+	public Note createNote(String noteName, String noteDescription) {
+		ContentValues values = new ContentValues();
+		values.put(Notes.COLUMN_NAME_NOTE_NAME, noteName);
+		values.put(Notes.COLUMN_NAME_NOTE_DESCRIPTION, noteDescription);		
+		
+		
+	
+		
+	    long insertId = db.insert(Notes.TABLE_NAME, null, values);
+	    
+	    Cursor c = db.query(
+	    		Notes.TABLE_NAME,
+	    		this.allColumns1, Notes._ID + " = " + insertId, 
+	    		null,
+	    		null, 
+	    		null, 
+	    		null
+	    	);
+	    c.moveToFirst();
+	    
+	    Note n = cursorToNote(c);
+	    c.close();
+	    
+	    return n;
+	
+	}
+	
+	public Note updateNote(Note n, String noteName, String noteDescription) {
+		ContentValues values = new ContentValues();
+		values.put(Notes.COLUMN_NAME_NOTE_NAME, noteName);
+		values.put(Notes.COLUMN_NAME_NOTE_DESCRIPTION, noteDescription);   
+		
+		
+		
+	    db.update(Notes.TABLE_NAME, values, Notes._ID + " = " + n.getId(), null);
+	    
+	    n.setNoteName(noteName);
+	    n.setNoteDescription(noteDescription);
+	   
+	    
+	    return n;
+	}
+	
+	public List<Note> getNotes() {
+	    List<Note> notes = new ArrayList<Note>();
+	    
+	    String sortOrder = Notes.COLUMN_NAME_NOTE_NAME + " DESC";
+	    
+	    Cursor c = db.query(
+	    		Tasks.TABLE_NAME,	// The table to query
+			    this.allColumns,			// The columns to return
+			    null,				// The columns for the WHERE clause
+			    null,				// The values for the WHERE clause
+			    null,				// don't group the rows
+			    null,				// don't filter by row groups
+			    sortOrder			// The sort order
+		    );
+
+	    c.moveToFirst();
+	    while (!c.isAfterLast()) {
+	      Note n = cursorToNote(c);
+	      notes.add(n);
+	      c.moveToNext();
+	    }
+	    
+	    // make sure to close the cursor
+	    c.close();
+	    
+	    return notes;
+	}
+	
+	public Note deleteNote(Note n) {
+	    long id = n.getId();
+	    db.delete(Notes.TABLE_NAME, Notes._ID + " = " + id, null);
+	    n.setId(0);
+	    return n;
+	}
+
+	
+	private Note cursorToNote(Cursor cursor) {
+		Note n = new Note();
+	    n.setId(cursor.getLong(0));//
+	    n.setNoteName(cursor.getString(1));
+	    n.setNoteDescription(cursor.getString(2));
+	    
+	    return n;
 	}
 }

@@ -1,7 +1,6 @@
 package com.example.examen810_db;
 
 
-
 import com.example.examen.R;
 import android.os.Bundle;
 import android.app.Activity;
@@ -10,46 +9,26 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
 
 import com.example.aci810_db.db.MyAppDataSource;
-import com.example.aci810_db.model.Task;
+import com.example.aci810_db.model.Note;
 
-public class TasksActivity extends Activity {
+public class NotesActivity extends Activity {
 	private MyAppDataSource ds;
-	private Task taskToUpdate;
+	private Note noteToUpdate;
 	
-	DatePicker dia;
-	Button boton;
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_tasks);
+		setContentView(R.layout.activity_notes);
 		setupActionBar();
 
-		
-		dia =(DatePicker)findViewById(R.id.dpDia);  
-		boton = (Button)findViewById(R.id.btButton);
-		
-		boton.setOnClickListener(new OnClickListener(){	
-
-			@Override
-			public void onClick(View view) {   //muestra boton seleccionar 
-				// TODO Auto-generated method stub
-				final int mes = dia.getMonth();
-				final int uno = 1;
-				Toast.makeText(getBaseContext(), "El dia seleccionado es:"+
-				dia.getYear()+ "/" + (mes + uno)+"/" + dia.getDayOfMonth() //yyyy-mm-dd
-					, Toast.LENGTH_LONG).show();
-			}
-					
-		});
 		
 		ds = new MyAppDataSource(this);
 	    ds.open();
@@ -57,18 +36,16 @@ public class TasksActivity extends Activity {
 	    Intent i = this.getIntent();
 	    
 	    
-	    if(i.hasExtra(TaskActivity.EXTRA_TASK))
+	    if(i.hasExtra(NoteActivity.EXTRA_NOTE))
 	    {
-	    	Task t = (Task) i.getSerializableExtra(TaskActivity.EXTRA_TASK);
+	    	Note n = (Note) i.getSerializableExtra(NoteActivity.EXTRA_NOTE);
 	    	
-	    	EditText nameTask = (EditText) this.findViewById(R.id.nameTask);
-	    	nameTask.setText(t.getTaskName());
+	    	EditText nameNote = (EditText) this.findViewById(R.id.nameNote);
+	    	nameNote.setText(n.getNoteName());
 			
-			EditText descriptionTask = (EditText) this.findViewById(R.id.descriptionTask);
-			descriptionTask.setText(t.getTaskDescription());
+			EditText descriptionNote = (EditText) this.findViewById(R.id.descriptionNote);
+			descriptionNote.setText(n.getNoteDescription());
 			
-			DatePicker dpDia = (DatePicker) this.findViewById(R.id.dpDia);
-			dpDia.updateDate(dia.getYear(),dia.getMonth() ,dia.getDayOfMonth());
 			
 			Button saveButton = (Button) this.findViewById(R.id.saveButton);
 			saveButton.setText("Update");
@@ -76,9 +53,9 @@ public class TasksActivity extends Activity {
 			Button deleteButton = (Button) this.findViewById(R.id.deleteButton);
 			deleteButton.setVisibility(Button.VISIBLE);
 			
-			this.setTitle("Update Task");
+			this.setTitle("Update Note");
 			
-			this.taskToUpdate = t;
+			this.noteToUpdate = n;
 	    }
 	    else
 	    {
@@ -89,9 +66,9 @@ public class TasksActivity extends Activity {
 	    	Button deleteButton = (Button) this.findViewById(R.id.deleteButton);
 	    	deleteButton.setVisibility(Button.VISIBLE);
 	    	
-	    	this.setTitle("Create Task");
+	    	this.setTitle("Create Note");
 	    	
-	    	this.taskToUpdate = null;
+	    	this.noteToUpdate = null;
 	    }
 	    
 	}
@@ -108,7 +85,7 @@ public class TasksActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.tasks, menu);
+		getMenuInflater().inflate(R.menu.notes, menu);
 		return true;
 	}
 
@@ -130,41 +107,36 @@ public class TasksActivity extends Activity {
 	}
 	
 	public void onSaveButtonClicked(View view) { 
-		EditText taskName = (EditText) this.findViewById(R.id.nameTask);
-		String nameTask = taskName.getText().toString();
+		EditText noteName = (EditText) this.findViewById(R.id.nameNote);
+		String nameNote = noteName.getText().toString();
 		
-		EditText descriptionTask = (EditText) this.findViewById(R.id.descriptionTask);
-		String taskDescription = descriptionTask.getText().toString();
-		
-		DatePicker date = (DatePicker) this.findViewById(R.id.dpDia);   
-		int day = date.getDayOfMonth();
-		int month = date.getMonth();
-		int year = date.getYear();
+		EditText descriptionNote = (EditText) this.findViewById(R.id.descriptionNote);
+		String noteDescription = descriptionNote.getText().toString();
 		
 		
-		if(nameTask.isEmpty() || taskDescription.isEmpty() || date.isEnabled())
+		if(nameNote.isEmpty() || noteDescription.isEmpty())
 		{
 			Toast.makeText(this, "Complete the form before saving", Toast.LENGTH_LONG).show();
 			return;
 		}
 		
-		Task t = null;
+		Note n = null;
 		
-		if(this.taskToUpdate != null)
+		if(this.noteToUpdate != null)
 		{
-			//t = ds.updateTask(this.taskToUpdate, nameTask, taskDescription,year+month+day);
+			n = ds.updateNote(this.noteToUpdate, nameNote, noteDescription);
 		}
 		else
 		{
 			
-		    //t = ds.createTask(nameTask, taskDescription,year+month+day); 
+		    n = ds.createNote(nameNote, noteDescription); 
 		
 			
 		}
 		
 		Intent i = new Intent();
-		i.putExtra(TaskActivity.EXTRA_TASK, t);
-		i.putExtra(TaskActivity.EXTRA_REMOVE, false);
+		i.putExtra(NoteActivity.EXTRA_NOTE, n);
+		i.putExtra(NoteActivity.EXTRA_REMOVE, false);
 		this.setResult(RESULT_OK, i);
 		
 		this.finish();
@@ -172,11 +144,11 @@ public class TasksActivity extends Activity {
 	
 	public void onDeleteButtonClicked(View view) {
 		
-		Task t = ds.deleteTask(this.taskToUpdate);
+		Note n = ds.deleteNote(this.noteToUpdate);
 		
 		Intent i = new Intent();
-		i.putExtra(TaskActivity.EXTRA_TASK, t);
-		i.putExtra(TaskActivity.EXTRA_REMOVE, true);
+		i.putExtra(NoteActivity.EXTRA_NOTE, n);
+		i.putExtra(NoteActivity.EXTRA_REMOVE, true);
 		this.setResult(RESULT_OK, i);
 		
 		this.finish();

@@ -14,6 +14,13 @@ public final class MyAppContract {
 		public static final String COLUMN_NAME_TASK_DESCRIPTION = "task_description";
 		public static final String COLUMN_NAME_DATE = "date_task";
 	}
+	
+	public static abstract class Notes implements BaseColumns {
+		public static final String TABLE_NAME = "notes";
+		public static final String COLUMN_NAME_NOTE_NAME = "note_name";
+		public static final String COLUMN_NAME_NOTE_DESCRIPTION = "note_description";
+	}
+
 
 
 }

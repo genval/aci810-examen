@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.examen.helpers.PreferencesHelper;
 import com.example.examen810_db.TaskActivity;
+import com.example.examen810_db.NoteActivity;
 
 public class ApplicationActivity extends Activity {
 
@@ -55,5 +56,10 @@ public class ApplicationActivity extends Activity {
 	public void onClickTask(View view){
 		Intent task = new Intent(this,TaskActivity.class);
 		this.startActivity(task);
+	}
+	
+	public void onClickNote(View view){
+		Intent note = new Intent(this,NoteActivity.class);
+		this.startActivity(note);
 	}
 }

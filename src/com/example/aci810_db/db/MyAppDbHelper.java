@@ -7,6 +7,7 @@ import android.util.Log;
 
 
 import com.example.aci810_db.db.MyAppContract.Tasks;
+import com.example.aci810_db.db.MyAppContract.Notes;
 
 public class MyAppDbHelper extends SQLiteOpenHelper {
 
@@ -40,6 +41,7 @@ public class MyAppDbHelper extends SQLiteOpenHelper {
 	    
 	    public void onCreate(SQLiteDatabase db) {
 	        db.execSQL(SQL_CREATE_TASKS);
+	        db.execSQL(SQL_CREATE_NOTES);
 	    }
 	    
 	    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -49,10 +51,46 @@ public class MyAppDbHelper extends SQLiteOpenHelper {
 	    	);
 
 	    	db.execSQL(SQL_DROP_TASKS);
+	    	db.execSQL(SQL_DROP_NOTES);
 	    	onCreate(db);
 	    }
 	    
 	    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 	        onUpgrade(db, oldVersion, newVersion);
 	    }
+	    
+	    //NOTES
+	    
+	    
+		private static final String SQL_CREATE_NOTES =
+			    "CREATE TABLE " + Notes.TABLE_NAME + " (" +
+			    Notes._ID + " INTEGER PRIMARY KEY," +
+			    Notes.COLUMN_NAME_NOTE_NAME + TEXT_TYPE + COMMA_SEPARATOR +
+			    Notes.COLUMN_NAME_NOTE_DESCRIPTION + TEXT_TYPE + COMMA_SEPARATOR +
+			    " )";
+		
+		private static final String SQL_DROP_NOTES =
+			    "DROP TABLE IF EXISTS " + Notes.TABLE_NAME;
+	    
+	   /* public MyAppDbHelper(Context context) {
+	        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+	    }*/
+	    
+	    /*public void onCreate1(SQLiteDatabase db) {
+	        db.execSQL(SQL_CREATE_NOTES);
+	    }*/
+	    
+	    /*public void onUpgrade1(SQLiteDatabase db, int oldVersion, int newVersion) {
+	    	Log.w(
+	    			MyAppDbHelper.class.getName(),
+	    			"Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data"
+	    	);
+
+	    	db.execSQL(SQL_DROP_NOTES);
+	    	onCreate(db);
+	    }*/
+	    
+	   /* public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+	        onUpgrade(db, oldVersion, newVersion);
+	    }*/
 }

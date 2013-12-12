@@ -62,6 +62,18 @@
             android:name="com.example.aci810_db.listeners.ListViewItemClickListener"
             android:label="@string/title_activity_list_view_item_click_listener" >
         </activity>
+        <activity
+            android:name="com.example.examen810_db.NoteActivity"
+            android:label="@string/title_activity_note" >
+        </activity>
+        <activity
+            android:name="com.example.examen810_db.NotesActivity"
+            android:label="@string/title_activity_notes" >
+        </activity>
+        <activity
+            android:name="com.example.aci810_db.model.Note"
+            android:label="@string/title_activity_note" >
+        </activity>
     </application>
 
 </manifest>
