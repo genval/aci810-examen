@@ -35,10 +35,12 @@
             android:label="@string/title_activity_application" >
         </activity>
         <activity
+            android:parentActivityName="com.example.examen.ApplicationActivity"
             android:name="com.example.examen810_db.TaskActivity"
             android:label="@string/title_activity_task" >
         </activity>
         <activity
+            android:parentActivityName="com.example.examen810_db.TaskActivityy"
             android:name="com.example.examen810_db.TasksActivity"
             android:label="@string/title_activity_tasks" >
         </activity>
@@ -63,10 +65,12 @@
             android:label="@string/title_activity_list_view_item_click_listener" >
         </activity>
         <activity
+            android:parentActivityName="com.example.examen.ApplicationActivity"
             android:name="com.example.examen810_db.NoteActivity"
             android:label="@string/title_activity_note" >
         </activity>
         <activity
+            android:parentActivityName="com.example.examen810_db.NoteActivity"
             android:name="com.example.examen810_db.NotesActivity"
             android:label="@string/title_activity_notes" >
         </activity>

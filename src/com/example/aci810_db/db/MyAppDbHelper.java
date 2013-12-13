@@ -66,7 +66,7 @@ public class MyAppDbHelper extends SQLiteOpenHelper {
 			    "CREATE TABLE " + Notes.TABLE_NAME + " (" +
 			    Notes._ID + " INTEGER PRIMARY KEY," +
 			    Notes.COLUMN_NAME_NOTE_NAME + TEXT_TYPE + COMMA_SEPARATOR +
-			    Notes.COLUMN_NAME_NOTE_DESCRIPTION + TEXT_TYPE + COMMA_SEPARATOR +
+			    Notes.COLUMN_NAME_NOTE_DESCRIPTION + TEXT_TYPE +
 			    " )";
 		
 		private static final String SQL_DROP_NOTES =
