@@ -188,7 +188,7 @@ public class MyAppDataSource {
 	public List<Note> getNotes() {
 	    List<Note> notes = new ArrayList<Note>();
 	    
-	    String sortOrder = Notes.COLUMN_NAME_NOTE_NAME + " DESC";
+	//String sortOrder = Notes.COLUMN_NAME_NOTE_NAME + " DESC";
 	    
 	    Cursor c = db.query(
 	    		Notes.TABLE_NAME,	// The table to query
@@ -197,7 +197,7 @@ public class MyAppDataSource {
 			    null,				// The values for the WHERE clause
 			    null,				// don't group the rows
 			    null,				// don't filter by row groups
-			    sortOrder			// The sort order
+			    null			// The sort order
 		    );
 
 	    c.moveToFirst();
