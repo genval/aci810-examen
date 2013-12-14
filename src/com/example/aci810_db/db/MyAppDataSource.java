@@ -191,7 +191,7 @@ public class MyAppDataSource {
 	    String sortOrder = Notes.COLUMN_NAME_NOTE_NAME + " DESC";
 	    
 	    Cursor c = db.query(
-	    		Tasks.TABLE_NAME,	// The table to query
+	    		Notes.TABLE_NAME,	// The table to query
 			    this.allColumns,			// The columns to return
 			    null,				// The columns for the WHERE clause
 			    null,				// The values for the WHERE clause
