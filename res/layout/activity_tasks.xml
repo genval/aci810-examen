@@ -25,20 +25,6 @@
         android:ems="10"
         android:hint="@string/task_description_label" />
 
-	<DatePicker
-	    android:id="@+id/dpDia"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="center_horizontal"
-	    />
-	    
-	<Button 
-	    android:id="@+id/btButton"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/btSeleccionar"
-	    />
-
 	
 	<Button
 	        android:id="@+id/saveButton"

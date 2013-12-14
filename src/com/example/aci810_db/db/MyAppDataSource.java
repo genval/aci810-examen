@@ -8,7 +8,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.DatePicker;
 import com.example.aci810_db.db.MyAppContract.Tasks;
 import com.example.aci810_db.db.MyAppContract.Notes;
 import com.example.aci810_db.model.Task;
@@ -25,7 +24,7 @@ public class MyAppDataSource {
 		    Tasks._ID,
 		    Tasks.COLUMN_NAME_TASK_NAME,
 		    Tasks.COLUMN_NAME_TASK_DESCRIPTION,
-		    Tasks.COLUMN_NAME_DATE
+		    //Tasks.COLUMN_NAME_DATE
 		    };
 
 	public MyAppDataSource(Context context) {
@@ -40,11 +39,11 @@ public class MyAppDataSource {
 		dbHelper.close();
 	}
 
-	public Task createTask(String taskName, String taskDescription, DatePicker date) {
+	public Task createTask(String taskName, String taskDescription/*, DatePicker date*/) {
 		ContentValues values = new ContentValues();
 		values.put(Tasks.COLUMN_NAME_TASK_NAME, taskName);
 		values.put(Tasks.COLUMN_NAME_TASK_DESCRIPTION, taskDescription);		
-		values.put(Tasks.COLUMN_NAME_DATE, date.getYear()+"-"+date.getMonth()+"-"+date.getDayOfMonth()); 
+		//values.put(Tasks.COLUMN_NAME_DATE, date.getYear()+"-"+date.getMonth()+"-"+date.getDayOfMonth()); 
 		
 	
 		
@@ -67,11 +66,11 @@ public class MyAppDataSource {
 	
 	}
 	
-	public Task updateTask(Task t, String taskName, String taskDescription,DatePicker date) {
+	public Task updateTask(Task t, String taskName, String taskDescription/*,DatePicker date*/) {
 		ContentValues values = new ContentValues();
 		values.put(Tasks.COLUMN_NAME_TASK_NAME, taskName);
 		values.put(Tasks.COLUMN_NAME_TASK_DESCRIPTION, taskDescription);
-		values.put(Tasks.COLUMN_NAME_DATE, date.getYear()+date.getMonth()+ date.getDayOfMonth());   
+		//values.put(Tasks.COLUMN_NAME_DATE, date.getYear()+date.getMonth()+ date.getDayOfMonth());   
 		
 		
 		
@@ -79,7 +78,7 @@ public class MyAppDataSource {
 	    
 	    t.setTaskName(taskName);
 	    t.setTaskDescription(taskDescription);
-	    t.setDate(date);
+	    //t.setDate(date);
 	    
 	    return t;
 	}
@@ -91,7 +90,7 @@ public class MyAppDataSource {
 	    
 	    Cursor c = db.query(
 	    		Tasks.TABLE_NAME,	// The table to query
-			    this.allColumns,			// The columns to return
+			    this.allColumns,	// The columns to return
 			    null,				// The columns for the WHERE clause
 			    null,				// The values for the WHERE clause
 			    null,				// don't group the rows

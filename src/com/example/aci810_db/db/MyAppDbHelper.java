@@ -18,7 +18,7 @@ public class MyAppDbHelper extends SQLiteOpenHelper {
 	    
 	//  private static final String NULL_TYPE = " NULL";
 		private static final String TEXT_TYPE = " TEXT";
-		private static final String INTEGER_TYPE = " INTEGER";
+	//	private static final String INTEGER_TYPE = " INTEGER";
 	//	private static final String REAL_TYPE = " REAL";
 	//	private static final String BLOB_TYPE = " BLOB";
 		
@@ -29,7 +29,7 @@ public class MyAppDbHelper extends SQLiteOpenHelper {
 			    Tasks._ID + " INTEGER PRIMARY KEY," +
 			    Tasks.COLUMN_NAME_TASK_NAME + TEXT_TYPE + COMMA_SEPARATOR +
 			    Tasks.COLUMN_NAME_TASK_DESCRIPTION + TEXT_TYPE + COMMA_SEPARATOR +
-			    Tasks.COLUMN_NAME_DATE + INTEGER_TYPE + 
+			   // Tasks.COLUMN_NAME_DATE + INTEGER_TYPE + 
 			    " )";
 		
 		private static final String SQL_DROP_TASKS =

@@ -10,9 +10,7 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,8 +22,8 @@ public class TasksActivity extends Activity {
 	private MyAppDataSource ds;
 	private Task taskToUpdate;
 	
-	DatePicker dia;
-	Button boton;
+	/*DatePicker dia;
+	Button boton;*/
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +32,7 @@ public class TasksActivity extends Activity {
 		setupActionBar();
 
 		
-		dia =(DatePicker)findViewById(R.id.dpDia);  
+		/*dia =(DatePicker)findViewById(R.id.dpDia);  
 		boton = (Button)findViewById(R.id.btButton);
 		
 		boton.setOnClickListener(new OnClickListener(){	
@@ -49,7 +47,7 @@ public class TasksActivity extends Activity {
 					, Toast.LENGTH_LONG).show();
 			}
 					
-		});
+		});*/
 		
 		ds = new MyAppDataSource(this);
 	    ds.open();
@@ -67,8 +65,8 @@ public class TasksActivity extends Activity {
 			EditText descriptionTask = (EditText) this.findViewById(R.id.descriptionTask);
 			descriptionTask.setText(t.getTaskDescription());
 			
-			DatePicker dpDia = (DatePicker) this.findViewById(R.id.dpDia);
-			dpDia.updateDate(dia.getYear(),dia.getMonth() ,dia.getDayOfMonth());
+			/*DatePicker dpDia = (DatePicker) this.findViewById(R.id.dpDia);
+			dpDia.updateDate(dia.getYear(),dia.getMonth() ,dia.getDayOfMonth());*/
 			
 			Button saveButton = (Button) this.findViewById(R.id.saveButton);
 			saveButton.setText("Update");
@@ -136,13 +134,13 @@ public class TasksActivity extends Activity {
 		EditText descriptionTask = (EditText) this.findViewById(R.id.descriptionTask);
 		String taskDescription = descriptionTask.getText().toString();
 		
-		DatePicker date = (DatePicker) this.findViewById(R.id.dpDia);   
+		/*DatePicker date = (DatePicker) this.findViewById(R.id.dpDia);   
 		int day = date.getDayOfMonth();
 		int month = date.getMonth();
-		int year = date.getYear();
+		int year = date.getYear();*/
 		
 		
-		if(nameTask.isEmpty() || taskDescription.isEmpty() || date.isEnabled())
+		if(nameTask.isEmpty() || taskDescription.isEmpty()/* || date.isEnabled()*/)
 		{
 			Toast.makeText(this, "Complete the form before saving", Toast.LENGTH_LONG).show();
 			return;
@@ -152,12 +150,13 @@ public class TasksActivity extends Activity {
 		
 		if(this.taskToUpdate != null)
 		{
-			//t = ds.updateTask(this.taskToUpdate, nameTask, taskDescription,year+month+day);
+			t = ds.updateTask(this.taskToUpdate, nameTask, taskDescription/*,year+month+day*/);
 		}
 		else
 		{
 			
-		    //t = ds.createTask(nameTask, taskDescription,year+month+day); 
+		    t = ds.createTask(nameTask, taskDescription /*,year+month+day*/); 
+		  
 		
 			
 		}
