@@ -9,7 +9,7 @@ public class Task implements Serializable {
 	private long id;
 	private String taskName;
 	private String taskDescription;
-	//private DatePicker date;
+	private String rate;
 	
 	public long getId() {
 		return id;
@@ -29,12 +29,12 @@ public class Task implements Serializable {
 	public void setTaskDescription(String taskDescription) {
 		this.taskDescription = taskDescription;
 	}
-	/*public DatePicker getDate() {
-		return date;
+	public String getRate() {
+		return rate;
 	}
-	public void setDate(DatePicker date) {
-		this.date = date;
-	}*/
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
 	
 	@Override
 	  public String toString() {

@@ -28,8 +28,8 @@ public class MyAppDbHelper extends SQLiteOpenHelper {
 			    "CREATE TABLE " + Tasks.TABLE_NAME + " (" +
 			    Tasks._ID + " INTEGER PRIMARY KEY," +
 			    Tasks.COLUMN_NAME_TASK_NAME + TEXT_TYPE + COMMA_SEPARATOR +
-			    Tasks.COLUMN_NAME_TASK_DESCRIPTION + TEXT_TYPE + //COMMA_SEPARATOR +
-			   // Tasks.COLUMN_NAME_DATE + INTEGER_TYPE + 
+			    Tasks.COLUMN_NAME_TASK_DESCRIPTION + TEXT_TYPE + COMMA_SEPARATOR +
+			    Tasks.COLUMN_NAME_RATE + TEXT_TYPE + 
 			    " )";
 		
 		private static final String SQL_DROP_TASKS =

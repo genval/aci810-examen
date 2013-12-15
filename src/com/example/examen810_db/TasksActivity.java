@@ -65,8 +65,9 @@ public class TasksActivity extends Activity {
 			EditText descriptionTask = (EditText) this.findViewById(R.id.descriptionTask);
 			descriptionTask.setText(t.getTaskDescription());
 			
-			/*DatePicker dpDia = (DatePicker) this.findViewById(R.id.dpDia);
-			dpDia.updateDate(dia.getYear(),dia.getMonth() ,dia.getDayOfMonth());*/
+			EditText number = (EditText)this.findViewById(R.id.numberField);
+			number.setText(t.getRate());
+			
 			
 			Button saveButton = (Button) this.findViewById(R.id.saveButton);
 			saveButton.setText("Update");
@@ -134,13 +135,11 @@ public class TasksActivity extends Activity {
 		EditText descriptionTask = (EditText) this.findViewById(R.id.descriptionTask);
 		String taskDescription = descriptionTask.getText().toString();
 		
-		/*DatePicker date = (DatePicker) this.findViewById(R.id.dpDia);   
-		int day = date.getDayOfMonth();
-		int month = date.getMonth();
-		int year = date.getYear();*/
+		EditText number = (EditText)this.findViewById(R.id.numberField);
+		String num = number.getText().toString();
 		
 		
-		if(nameTask.isEmpty() || taskDescription.isEmpty()/* || date.isEnabled()*/)
+		if(nameTask.isEmpty() || taskDescription.isEmpty()|| num.isEmpty())
 		{
 			Toast.makeText(this, "Complete the form before saving", Toast.LENGTH_LONG).show();
 			return;
@@ -150,12 +149,12 @@ public class TasksActivity extends Activity {
 		
 		if(this.taskToUpdate != null)
 		{
-			t = ds.updateTask(this.taskToUpdate, nameTask, taskDescription/*,year+month+day*/);
+			t = ds.updateTask(this.taskToUpdate, nameTask, taskDescription,num);
 		}
 		else
 		{
 			
-		    t = ds.createTask(nameTask, taskDescription /*,year+month+day*/); 
+		    t = ds.createTask(nameTask, taskDescription ,num); 
 		  
 		
 			

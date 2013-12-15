@@ -23,8 +23,8 @@ public class MyAppDataSource {
 	private String[] allColumns = {
 		    Tasks._ID,
 		    Tasks.COLUMN_NAME_TASK_NAME,
-		    Tasks.COLUMN_NAME_TASK_DESCRIPTION
-		    //Tasks.COLUMN_NAME_DATE
+		    Tasks.COLUMN_NAME_TASK_DESCRIPTION,
+		    Tasks.COLUMN_NAME_RATE
 		    };
 
 	public MyAppDataSource(Context context) {
@@ -39,11 +39,11 @@ public class MyAppDataSource {
 		dbHelper.close();
 	}
 
-	public Task createTask(String taskName, String taskDescription/*, DatePicker date*/) {
+	public Task createTask(String taskName, String taskDescription, String rate) {
 		ContentValues values = new ContentValues();
 		values.put(Tasks.COLUMN_NAME_TASK_NAME, taskName);
 		values.put(Tasks.COLUMN_NAME_TASK_DESCRIPTION, taskDescription);		
-		//values.put(Tasks.COLUMN_NAME_DATE, date.getYear()+"-"+date.getMonth()+"-"+date.getDayOfMonth()); 
+		values.put(Tasks.COLUMN_NAME_RATE, rate); 
 		
 	
 		
@@ -66,11 +66,11 @@ public class MyAppDataSource {
 	
 	}
 	
-	public Task updateTask(Task t, String taskName, String taskDescription/*,DatePicker date*/) {
+	public Task updateTask(Task t, String taskName, String taskDescription,String rate) {
 		ContentValues values = new ContentValues();
 		values.put(Tasks.COLUMN_NAME_TASK_NAME, taskName);
 		values.put(Tasks.COLUMN_NAME_TASK_DESCRIPTION, taskDescription);
-		//values.put(Tasks.COLUMN_NAME_DATE, date.getYear()+date.getMonth()+ date.getDayOfMonth());   
+		values.put(Tasks.COLUMN_NAME_RATE,rate);   
 		
 		
 		
@@ -78,7 +78,7 @@ public class MyAppDataSource {
 	    
 	    t.setTaskName(taskName);
 	    t.setTaskDescription(taskDescription);
-	    //t.setDate(date);
+	    t.setRate(rate);
 	    
 	    return t;
 	}
@@ -124,7 +124,7 @@ public class MyAppDataSource {
 	    t.setId(cursor.getLong(0));//
 	    t.setTaskName(cursor.getString(1));
 	    t.setTaskDescription(cursor.getString(2));
-	  //  t.setDate(cursor.get(3));
+	    t.setRate(cursor.getString(3));
 	    
 	    return t;
 	}

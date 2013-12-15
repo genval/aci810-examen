@@ -39,7 +39,7 @@
     <string name="title_activity_my_app_db_helper">MyAppDbHelper</string>
     <string name="title_activity_my_app_data_source">MyAppDataSource</string>
     <string name="title_activity_list_view_item_click_listener">ListViewItemClickListener</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="number">Rate your task from 0 to 9</string>
     <string name="title_activity_note">NoteActivity</string>
     <string name="title_activity_notes">NotesActivity</string>
 
