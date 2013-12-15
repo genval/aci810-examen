@@ -28,7 +28,7 @@ public class MyAppDbHelper extends SQLiteOpenHelper {
 			    "CREATE TABLE " + Tasks.TABLE_NAME + " (" +
 			    Tasks._ID + " INTEGER PRIMARY KEY," +
 			    Tasks.COLUMN_NAME_TASK_NAME + TEXT_TYPE + COMMA_SEPARATOR +
-			    Tasks.COLUMN_NAME_TASK_DESCRIPTION + TEXT_TYPE + COMMA_SEPARATOR +
+			    Tasks.COLUMN_NAME_TASK_DESCRIPTION + TEXT_TYPE + //COMMA_SEPARATOR +
 			   // Tasks.COLUMN_NAME_DATE + INTEGER_TYPE + 
 			    " )";
 		
@@ -76,21 +76,21 @@ public class MyAppDbHelper extends SQLiteOpenHelper {
 	        super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	    }*/
 	    
-	    /*public void onCreate1(SQLiteDatabase db) {
+	   /* public void onCreate1(SQLiteDatabase db) {
 	        db.execSQL(SQL_CREATE_NOTES);
-	    }*/
+	    }
 	    
-	    /*public void onUpgrade1(SQLiteDatabase db, int oldVersion, int newVersion) {
+	    public void onUpgrade1(SQLiteDatabase db, int oldVersion, int newVersion) {
 	    	Log.w(
 	    			MyAppDbHelper.class.getName(),
 	    			"Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data"
 	    	);
 
 	    	db.execSQL(SQL_DROP_NOTES);
-	    	onCreate(db);
+	    	onCreate1(db);
 	    }*/
 	    
-	   /* public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-	        onUpgrade(db, oldVersion, newVersion);
+	   /* public void onDowngrade1(SQLiteDatabase db, int oldVersion, int newVersion) {
+	        onUpgrade1(db, oldVersion, newVersion);
 	    }*/
 }

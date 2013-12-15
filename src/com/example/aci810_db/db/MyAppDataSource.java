@@ -23,7 +23,7 @@ public class MyAppDataSource {
 	private String[] allColumns = {
 		    Tasks._ID,
 		    Tasks.COLUMN_NAME_TASK_NAME,
-		    Tasks.COLUMN_NAME_TASK_DESCRIPTION,
+		    Tasks.COLUMN_NAME_TASK_DESCRIPTION
 		    //Tasks.COLUMN_NAME_DATE
 		    };
 
@@ -136,7 +136,7 @@ public class MyAppDataSource {
 	private String[] allColumns1 = {
 		    Notes._ID,
 		    Notes.COLUMN_NAME_NOTE_NAME,
-		    Notes.COLUMN_NAME_NOTE_DESCRIPTION,
+		    Notes.COLUMN_NAME_NOTE_DESCRIPTION
 		    };
 
 
