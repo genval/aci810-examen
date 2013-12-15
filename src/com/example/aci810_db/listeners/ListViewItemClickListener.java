@@ -22,21 +22,22 @@ public class ListViewItemClickListener implements AdapterView.OnItemClickListene
 	}
 	
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		Task t = (Task) parent.getItemAtPosition(position);
+		Object o =  parent.getItemAtPosition(position);
 		
-		if(t != null)
+		if(o instanceof Task)
 		{
+			Task task = (Task)o;
 			Intent i = new Intent(this.activity, TasksActivity.class);
-			i.putExtra("task", t);
+			i.putExtra("task", task);
 			this.activity.startActivityForResult(i, TaskActivity.REQUEST_CODE_UPDATE_TASK);			
 		}
 		
-	Note n = (Note) parent.getItemAtPosition(position);
 		
-		if(n != null)
+		else if(o instanceof Note)
 		{
+			Note note = (Note) o;
 			Intent i = new Intent(this.activity, NotesActivity.class);
-			i.putExtra("note", n);
+			i.putExtra("note", note);
 			this.activity.startActivityForResult(i, NoteActivity.REQUEST_CODE_UPDATE_NOTE);			
 		}
 	}
