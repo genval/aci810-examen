@@ -191,7 +191,7 @@ public class MyAppDataSource {
 	    
 	    Cursor c = db.query(
 	    		Notes.TABLE_NAME,	// The table to query
-			    this.allColumns,			// The columns to return
+			    this.allColumns1,			// The columns to return
 			    null,				// The columns for the WHERE clause
 			    null,				// The values for the WHERE clause
 			    null,				// don't group the rows
